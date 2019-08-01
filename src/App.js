@@ -10,7 +10,6 @@ import DataLoader from './firebase/dataloader'
 function App() {
   return (
     <div className="App">
-      <DataLoader/>
       <Header/>
       <Switch>
         <Route exact path='/' component={HomePage} />
