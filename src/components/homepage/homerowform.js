@@ -37,7 +37,7 @@ class HomeRowForm extends React.Component {
                     <button 
                     className="btn btn-primary" 
                     type="submit"
-                    onClick={() => { this.props.clickHandler(this.state) }}
+                    onClick={() => { this.props.clickHandler(this.state, this.props.uid) }}
                     >Add Location</button>
                 </td>
             </tr>

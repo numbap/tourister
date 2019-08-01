@@ -4,6 +4,7 @@ import {selectSpotsById} from '../../redux/reducers/spots.selectors'
 import {selectLocationById} from '../../redux/reducers/locations.selectors'
 import LocationRowForm from './locationrowform'
 import database from '../../firebase/firebase'
+import Footer from '../footer/footer'
 
 
 class Locations extends React.Component{
@@ -19,7 +20,7 @@ class Locations extends React.Component{
     } 
 
 
-    addUpdate = (spot) => {
+    addUpdate = (spot, uid) => {
         // this.props.addUpdateSpot(spot)
         console.log('addupdate')
         const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/' + encodeURIComponent(spot.description) + '.json?access_token=pk.eyJ1IjoicGpvYmluIiwiYSI6ImNqdzkyYW04azF5azU0Ymw5d3pubWZ0ajYifQ.yfUUDFgq4poK7JyNhhOz_g&limit=1'
@@ -32,7 +33,7 @@ class Locations extends React.Component{
                 spot.lat = myJson.features[0].center[1];
                 spot.lng = myJson.features[0].center[0];
                 spot.heading = Math.random() * 359;
-                this.props.addUpdateSpot(spot)
+                this.props.addUpdateSpot(spot, uid)
              }  
         })
         .then(() => this.setState({slectedRow: null}))
@@ -83,7 +84,7 @@ class Locations extends React.Component{
                                     :
                                         <div><i style={{cursor: 'pointer'}} 
                                         className="far fa-trash-alt" 
-                                        onClick={() => this.props.deleteSpot(id)}
+                                        onClick={() => this.props.deleteSpot(id, this.props.user.uid)}
                                          >
                                         </i> - 
                                         <i style={{cursor: 'pointer'}}  
@@ -97,6 +98,7 @@ class Locations extends React.Component{
                             <LocationRowForm 
                                 key={id ? id : i + 1} 
                                 formSpot={{location: this.props.match.params.collectionId, id, lat, lng, description}} 
+                                uid={this.props.user.uid}
                                 clickHandler={this.addUpdate} />
                         ))}
                         </tbody>
@@ -138,7 +140,7 @@ class Locations extends React.Component{
                       <div className="btn-group">
                         <button type="button" 
                             className="btn btn-sm btn-outline-secondary"
-                            onClick={() => this.props.deleteSpot(id)} >
+                            onClick={() => this.props.deleteSpot(id, this.props.user.uid)} >
                             <i className="far fa-trash-alt"  ></i> Delete
                         </button>
                       </div>
@@ -156,8 +158,8 @@ class Locations extends React.Component{
 
             </div>
           </div>
-
-            </div>
+          <Footer name={this.props.user.displayName}/>
+        </div>
         )
     }
 }
@@ -165,20 +167,21 @@ class Locations extends React.Component{
 const mapStateToProps = (state, ownProps) => {
     return {
         spots: selectSpotsById(ownProps.match.params.collectionId)(state),
-        currentLocation: selectLocationById(ownProps.match.params.collectionId)(state)
+        currentLocation: selectLocationById(ownProps.match.params.collectionId)(state),
+        user: state.user
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       deleteSpot: (id) => { 
-        database.ref('spots/' + id).set(null)
+       deleteSpot: (id, uid) => { 
+        database.ref(uid + '/spots/' + id).set(null)
         .then( dispatch({type: 'REMOVE_SPOT', id: id}) )
         .catch((e) => console.log(e))
 
         }, 
-       addUpdateSpot: (spot) => { 
-        database.ref('spots/' + spot.id).update(spot)
+       addUpdateSpot: (spot, uid) => { 
+        database.ref(uid + '/spots/' + spot.id).update(spot)
         .then(() => dispatch({type: 'ADD_SPOT', spot: spot}))
      .catch((e) => console.log(e)) }
     }

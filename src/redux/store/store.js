@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import locations from '../reducers/locations';
-import spots from '../reducers/spots'; 
+import spots from '../reducers/spots';
+import user from '../reducers/user';  
 import thunk from 'redux-thunk'
 
 const demoState = {
@@ -25,7 +26,8 @@ export default () => {
     return createStore(
         combineReducers({
              locations: locations,
-             spots: spots
+             spots: spots,
+             user: user
         }
     ), 
     applyMiddleware(thunk)

@@ -5,7 +5,7 @@ import Locations from './components/locations/locations'
 import HomePage from './components/homepage/homepage'
 import { Switch, Route } from 'react-router-dom'
 import './firebase/firebase'
-import DataLoader from './firebase/dataloader'
+
 
 function App() {
   return (
