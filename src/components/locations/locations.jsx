@@ -60,9 +60,9 @@ class Locations extends React.Component{
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Lat</th>
+                                <th scope="col">Lon</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
