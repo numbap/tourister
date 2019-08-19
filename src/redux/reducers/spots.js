@@ -4,7 +4,6 @@ const spotsReducerDefaultState = []
 export default (state = spotsReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_SPOT':
-            console.log(action.spot, 'reducer')
             return [
                 ...state.filter(({ id }) => id !== action.spot.id),
                 action.spot

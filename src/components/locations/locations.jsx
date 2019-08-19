@@ -190,14 +190,3 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(Locations)
 
 
-
-
-
-
-// <div  className="col-sm-3">
-// <a href={`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${parseFloat(lat)},${parseFloat(lng)}&heading=-45&pitch=38&fov=80`} target="_blank" >
-
-// </a>
-// <div  onClick={() => this.props.deleteSpot(id)}>
-
-// </div>

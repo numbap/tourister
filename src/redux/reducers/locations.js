@@ -1,5 +1,3 @@
-// const locationsReducerDefaultState = [];
-
 const locationsReducerDefaultState = []
 
  
@@ -13,7 +11,6 @@ export default (state = locationsReducerDefaultState, action) => {
         case 'REMOVE_LOCATION':
             return state.filter(({ id }) => id !== action.id);
         case 'SET_LOCATIONS':
-            console.log('setting locations', action.locations)
             return action.locations
         default:
             return state;

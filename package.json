@@ -12,6 +12,8 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-shallow-render": "^1.0.1",
+    "react-test-renderer": "^16.9.0",
     "redux": "redux",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
@@ -20,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watch --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

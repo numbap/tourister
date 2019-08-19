@@ -10,7 +10,6 @@ import Footer from '../footer/footer'
 class HomePage extends React.Component {
     constructor(props){
         super(props)
-        console.log(props)
         this.state = { slectedRow: null }
         this.slectRow = this.slectRow.bind(this)
     }
@@ -59,7 +58,6 @@ class HomePage extends React.Component {
     }
 
     render(){
-        console.log(this.props)
         return (
             <div className="container">
               <div className="row">

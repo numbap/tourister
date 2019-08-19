@@ -22,7 +22,6 @@ const demoState = {
 };
  
 export default () => {
-    console.log('done')
     return createStore(
         combineReducers({
              locations: locations,
@@ -32,5 +31,3 @@ export default () => {
     ), 
     applyMiddleware(thunk)
     )};
-
-// https://grokonez.com/frontend/react/how-to-connect-react-with-redux-react-redux-example
