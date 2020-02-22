@@ -130,7 +130,7 @@ class Locations extends React.Component{
                         preserveAspectRatio="xMidYMid slice" 
                         focusable="false" 
                         role="img" 
-                        src={`https://maps.googleapis.com/maps/api/streetview?size=400x400&location=${parseFloat(lat)},${parseFloat(lng)}&fov=90&heading=${parseFloat(heading)}&pitch=10&key=AIzaSyAshBQx-Et3oAP6gb8ZcuCPtztZbuJrIMM`} 
+                        src={`https://maps.googleapis.com/maps/api/streetview?size=400x400&location=${parseFloat(lat)},${parseFloat(lng)}&fov=90&heading=${parseFloat(heading)}&pitch=10&key=AIzaSyC2EBTGzN9chyTzCri1Gjm6m9yqZeS6Gf0`} 
                         className="img-fluid img-thumbnail" 
                         alt="" />
                     </a>
